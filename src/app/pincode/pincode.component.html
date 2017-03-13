@@ -1,38 +1,49 @@
 <div class="panel panel-primary login-panel">
-  <div class="panel-heading login-header">
-    {{title}}
-  </div>
-  <div class="panel-body">
+    <div class="panel-heading login-header">
+        {{title}}
+    </div>
     <div class="panel-body">
-      <div class="form-div">
-        <form novalidate [formGroup]='pForm' class="pForm" (submit)="search()">
-          <input type="text" [ngClass]="{ 'has-error': pForm.controls.pincode.dirty && pForm.controls.pincode.invalid}" name="pincode"
-            class="search-input form-control" placeholder="Enter 6 digit pincode" formControlName="pincode" [(ngModel)]="pincode"
-          />
-          <button [disabled]="pForm.invalid" class="btn btn-primary" type="submit">Search</button>
-          <div>
-            <span *ngIf="pForm.dirty && pForm.invalid" class="pincode-error">Please enter valid pincode</span>
-          </div>
-        </form>
-      </div>
-      <!-- <div>
+        <div class="panel-body">
+            <div class="form-div">
+                <form novalidate [formGroup]='pForm' class="pForm" (submit)="search()">
+                    <input type="text" [ngClass]="{ 'has-error': pForm.controls.pincode.dirty && pForm.controls.pincode.invalid}" name="pincode" class="search-input form-control" placeholder="Enter 6 digit pincode" formControlName="pincode" [(ngModel)]="pincode" />
+                    <button [disabled]="pForm.invalid" class="btn btn-primary" type="submit">Search</button>
+                    <div>
+                        <span *ngIf="pForm.dirty && pForm.invalid" class="pincode-error">Please enter valid pincode</span>
+                    </div>
+                </form>
+            </div>
+            <!-- <div>
                 <ul>
                     <li><strong>Lattitude :</strong> {{lat}}</li>
                     <li><strong>Longitude :</strong> {{lng}}</li>
                 </ul>
             </div>-->
-      <div class='row'>
-        <div class='col-lg-12 col-md-12 map-div'>
-          <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="2">
-            <sebm-google-map-marker *ngFor="let m of markPointers; let i = index" (onMarkClicked)="markInfo(m)" [latitude]="m.lat" [longitude]="m.lng"
-              [label]="m.label">
-              <sebm-google-map-info-window [disableAutoPan]="true">
-                <strong style="color:green">{{m.info}}</strong>
-              </sebm-google-map-info-window>
-            </sebm-google-map-marker>
-          </sebm-google-map>
+            
+            <!--- Custom Structural Directive with template ---> 
+            <div>
+            <template [geoLocation]="markPointers && markPointers.length > 0">
+            
+                <ul *ngFor="let m of markPointers">
+                    <li><strong>Lattitude :</strong> {{m.lat}}</li>
+                    <li><strong>Longitude :</strong> {{m.lng}}</li>
+                </ul>
+            
+            </template>
+            </div>
+            <!--------------------------------------------------->
+            
+            <div class='row'>
+                <div class='col-lg-12 col-md-12 map-div'>
+                    <sebm-google-map [latitude]="lat" [longitude]="lng" [zoom]="2">
+                        <sebm-google-map-marker *ngFor="let m of markPointers; let i = index" (onMarkClicked)="markInfo(m)" [latitude]="m.lat" [longitude]="m.lng" [label]="">
+                            <sebm-google-map-info-window [disableAutoPan]="true">
+                                <strong style="color:green">{{m.info}}</strong>
+                            </sebm-google-map-info-window>
+                        </sebm-google-map-marker>
+                    </sebm-google-map>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
-  </div>
 </div>

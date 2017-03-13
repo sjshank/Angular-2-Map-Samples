@@ -1,4 +1,4 @@
-# Angular2MapsSample
+# Angular-2-Map-Sample
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
 
@@ -29,3 +29,14 @@ Run `ng github-pages:deploy` to deploy to GitHub Pages.
 ## Further help
 
 To get more help on the `angular-cli` use `ng help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## Set LESS CSS-PreCompiler as Default
+
+Install less & less-loader via npm then change your styleExt in angular-cli.json to either less (or you can set that via ng set defaults.styleExt less)
+Then change src/style.css to src/style.less and ['app.component.css'] to ['app.component.less']. It will work as expected.
+
+## Custom Structural Directive Example Included
+
+## anguar-2-unsubscribe-observables Example Included
+

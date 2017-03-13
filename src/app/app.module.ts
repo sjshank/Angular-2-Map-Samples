@@ -6,6 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { BeginnerComponent } from './beginner/beginner.component';
 import { PincodeComponent } from './pincode/pincode.component';
+import { GeoLocationDirective } from './pincode/pincode.directive';
 
 import { PincodeService } from './pincode/pincode.service';
 
@@ -15,7 +16,8 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
   declarations: [
     AppComponent,
     BeginnerComponent,
-    PincodeComponent
+    PincodeComponent,
+    GeoLocationDirective
   ],
   imports: [
     BrowserModule,

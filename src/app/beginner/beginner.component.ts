@@ -4,7 +4,7 @@ import { Http } from '@angular/http';
 @Component({
   selector: 'map-beginner-sam',
   templateUrl: './beginner.component.html',
-  styleUrls: ['./beginner.component.css']
+  styleUrls: ['./beginner.component.less']
 })
 export class BeginnerComponent {
   title = 'Angular 2 Maps Sample - Beginner';

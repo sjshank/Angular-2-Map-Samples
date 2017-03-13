@@ -9,7 +9,7 @@ import { IAddress } from '../address';
 @Component({
     selector: 'map-pincode-sam',
     templateUrl: './pincode.component.html',
-    styleUrls: ['./pincode.component.css']
+    styleUrls: ['./pincode.component.less']
 })
 
 
@@ -22,6 +22,7 @@ export class PincodeComponent implements OnDestroy, OnInit {
     pForm: FormGroup;
     pincode: any;
     markPointers: any[];
+    
 
     constructor(private _fb: FormBuilder, private pService: PincodeService) {
 
@@ -47,11 +48,12 @@ export class PincodeComponent implements OnDestroy, OnInit {
 
     search(): void {
         if (this.pForm.dirty && this.pForm.valid) {
+            
             this.pService.getGeoLocation(this.pincode)
                 .takeWhile(() => this.alive)
                 .subscribe(
                 data => {
-                    this._parseResponse(data);
+                    this.markPointers = this._parseResponse(data);
                 },
                 error => {
                     console.log("Error ocuured-----", error);
@@ -65,14 +67,15 @@ export class PincodeComponent implements OnDestroy, OnInit {
 
 
     private _parseResponse(data) {
-        console.log(this);
+        let markArry = [];
         for (let item of data['results']) {
-            this.markPointers.push({
+            markArry.push({
                 'lat': item['geometry']['location']['lat'],
                 'lng': item['geometry']['location']['lng'],
                 'label': 'M',
                 'info': item['formatted_address']
             })
         }
+        return markArry;
     }
 }
