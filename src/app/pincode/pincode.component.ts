@@ -1,5 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormBuilder, Validators }  from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import "rxjs/add/operator/takeWhile";
 
 import { PincodeService } from './pincode.service';
 
@@ -11,48 +12,67 @@ import { IAddress } from '../address';
     styleUrls: ['./pincode.component.css']
 })
 
-export class PincodeComponent{
-    title : string = 'Angular 2 Map Sample - Pincode Search';
-    
+
+/*
+*       Don't forget to unsubscribe()
+*/
+export class PincodeComponent implements OnDestroy, OnInit {
+    title: string = 'Angular 2 Map Sample - Pincode Search';
+    private alive: boolean = true;
     pForm: FormGroup;
     pincode: any;
-    markPointers : any[];
+    markPointers: any[];
 
-    constructor(private _fb: FormBuilder, private pService: PincodeService){
+    constructor(private _fb: FormBuilder, private pService: PincodeService) {
 
     }
 
-    ngOnInit(){
+    ngOnInit() {
         this.pForm = this._fb.group({
             'pincode': ['', [Validators.required, Validators.pattern('[0-9]{6,6}')]]
         });
     };
 
-    search() : void{
-        if(this.pForm.dirty && this.pForm.valid){
+    ngOnDestroy() {
+        //Called once, before the instance is destroyed.
+        //Add 'implements OnDestroy' to the class.
+        this.alive = false;
+    }
+
+/*
+*    takeWhile() operator is an excellent solution to unsubscribing from an observable subscription
+*    as part of Angular’s component lifecycle.
+*/
+
+
+    search(): void {
+        if (this.pForm.dirty && this.pForm.valid) {
             this.pService.getGeoLocation(this.pincode)
-                        .subscribe(
-                            data => {
-                               this._parseResponse(data);
-                            },
-                            error => {
-                                console.log("Error ocuured-----", error);
-                            }
-                        )
+                .takeWhile(() => this.alive)
+                .subscribe(
+                data => {
+                    this._parseResponse(data);
+                },
+                error => {
+                    console.log("Error ocuured-----", error);
+                }
+                )
         }
     }
 
-    
 
-    private _parseResponse(data){
+
+
+
+    private _parseResponse(data) {
         console.log(this);
         for (let item of data['results']) {
             this.markPointers.push({
-                'lat' : item['geometry']['location']['lat'],
-                'lng' : item['geometry']['location']['lng'],
-                'label' : 'M',
+                'lat': item['geometry']['location']['lat'],
+                'lng': item['geometry']['location']['lng'],
+                'label': 'M',
                 'info': item['formatted_address']
             })
         }
-    } 
+    }
 }
