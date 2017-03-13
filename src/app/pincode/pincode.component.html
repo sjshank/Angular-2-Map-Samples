@@ -25,8 +25,10 @@
             <template [geoLocation]="markPointers && markPointers.length > 0">
             
                 <ul *ngFor="let m of markPointers">
+                    <li><strong>Address :</strong> {{m.info}}</li>
                     <li><strong>Lattitude :</strong> {{m.lat}}</li>
                     <li><strong>Longitude :</strong> {{m.lng}}</li>
+                    <li><hr></li>
                 </ul>
             
             </template>
