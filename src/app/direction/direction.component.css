@@ -1,0 +1,9 @@
+.dForm {
+  max-width: 70%;
+}
+.dForm .direction-div {
+  max-width: 70%;
+}
+.dForm .direction-div .direction-btn {
+  min-width: 44%;
+}

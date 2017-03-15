@@ -12,7 +12,7 @@
       </div>
       <div class='row'>
         <div class='col-lg-12 col-md-12 map-div'>
-          <sebm-google-map [latitude]="lat" [longitude]="lng">
+          <sebm-google-map [latitude]="lat" [longitude]="lng" [mapTypeControl]="true" [streetViewControl]="true">
             <sebm-google-map-marker [latitude]="lat" [longitude]="lng" [label]="'M'">
             </sebm-google-map-marker>
           </sebm-google-map>

@@ -6,9 +6,11 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { BeginnerComponent } from './beginner/beginner.component';
 import { PincodeComponent } from './pincode/pincode.component';
+import { DirectionComponent } from './direction/direction.component';
 import { GeoLocationDirective } from './pincode/pincode.directive';
 
 import { PincodeService } from './pincode/pincode.service';
+import { WindowRef } from './window.service';
 
 import { AgmCoreModule } from 'angular2-google-maps/core';
 
@@ -17,7 +19,8 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     AppComponent,
     BeginnerComponent,
     PincodeComponent,
-    GeoLocationDirective
+    GeoLocationDirective,
+    DirectionComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,7 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
       apiKey: 'AIzaSyDv2DwN6PCEXUxZC3WwXBnl4eQROfj2hQ0'
     })
   ],
-  providers: [PincodeService],
+  providers: [PincodeService, WindowRef],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

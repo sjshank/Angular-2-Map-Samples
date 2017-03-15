@@ -3,3 +3,6 @@
   list-style: none;
   padding-left: 0px;
 }
+.clear-both {
+  clear: both;
+}
