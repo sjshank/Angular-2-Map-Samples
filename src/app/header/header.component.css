@@ -1,0 +1,13 @@
+.user-detail-ul,
+.list-group {
+  list-style: none;
+}
+.author-modal ul.list-group {
+  overflow-y: scroll;
+  max-height: 300px;
+}
+.profile-img {
+  border-radius: 5px;
+  width: 200px;
+  height: 200px;
+}

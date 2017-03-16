@@ -1,0 +1,41 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <span class="navbar-brand" >{{hTitle}}</span>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+         
+          <ul class="nav navbar-nav navbar-right">
+            <li><a role="button" (click)="authorModel.open()">About Me</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+
+    <modal #authorModel [hideCloseButton]="false"
+        [closeOnEscape]="true"
+        [closeOnOutsideClick]="false"
+        (onOpen)="retrieveGitProfile()">
+        <modal-header>
+            <h1>Author Details</h1>
+        </modal-header>
+        <modal-content class="author-modal">
+            <ul *ngIf="user" class="user-detail-ul list-group">
+              <li class="list-group-item" >
+                <ul class="user-detail-ul">
+                  <li><img src="{{user.avatar_url}}" class="profile-img" alt="No Image"></li>
+                  <li>&nbsp;</li>
+                  <li><strong>Name :</strong> {{user.name}}</li>
+                  <li><strong>Company :</strong> {{user.company}}</li>
+                  <li><strong>Location :</strong> {{user.location}}</li>
+                  <li><strong>About :</strong> {{user.bio}}</li>
+                  <li><strong>Repositories :</strong> <a href="{{user.url}}" target="_blank"> {{user.public_repos}} Repos</a></li>
+                </ul>
+              </li>
+            </ul>
+        </modal-content>
+        <modal-footer>
+            <button class="btn btn-primary close-btn" (click)="authorModel.close()">OK</button>
+        </modal-footer>
+    </modal>

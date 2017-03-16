@@ -6,3 +6,18 @@
 .clear-both {
   clear: both;
 }
+body {
+  padding-top: 80px;
+}
+.profile-img {
+  border-radius: 5px;
+  width: 200px;
+  height: 200px;
+}
+.user-detail-ul,
+.list-group {
+  list-style: none;
+}
+.author-modal ul.list-group {
+  max-height: 500px;
+}

@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { HeaderComponent } from './header/header.component';
+import { AuthorService } from './header/author.service';
 import { BeginnerComponent } from './beginner/beginner.component';
 import { PincodeComponent } from './pincode/pincode.component';
 import { DirectionComponent } from './direction/direction.component';
@@ -14,10 +16,12 @@ import { PincodeService } from './pincode/pincode.service';
 import { WindowRef } from './window.service';
 
 import { AgmCoreModule } from 'angular2-google-maps/core';
+import {ModalModule} from "ngx-modal";
 
 @NgModule({
   declarations: [
     AppComponent,
+    HeaderComponent,
     BeginnerComponent,
     PincodeComponent,
     GeoLocationDirective,
@@ -31,9 +35,10 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     HttpModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyDv2DwN6PCEXUxZC3WwXBnl4eQROfj2hQ0'
-    })
+    }),
+    ModalModule
   ],
-  providers: [PincodeService, WindowRef],
+  providers: [PincodeService, WindowRef, AuthorService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
