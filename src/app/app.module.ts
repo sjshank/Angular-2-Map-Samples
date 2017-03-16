@@ -8,6 +8,7 @@ import { BeginnerComponent } from './beginner/beginner.component';
 import { PincodeComponent } from './pincode/pincode.component';
 import { DirectionComponent } from './direction/direction.component';
 import { GeoLocationDirective } from './pincode/pincode.directive';
+import { DirectionsMapDirective } from './direction/direction.directive'
 
 import { PincodeService } from './pincode/pincode.service';
 import { WindowRef } from './window.service';
@@ -20,7 +21,8 @@ import { AgmCoreModule } from 'angular2-google-maps/core';
     BeginnerComponent,
     PincodeComponent,
     GeoLocationDirective,
-    DirectionComponent
+    DirectionComponent,
+    DirectionsMapDirective
   ],
   imports: [
     BrowserModule,

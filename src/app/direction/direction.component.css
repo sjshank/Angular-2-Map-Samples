@@ -7,3 +7,16 @@
 .dForm .direction-div .direction-btn {
   min-width: 44%;
 }
+.sebm-google-map-container {
+  height: 300px;
+}
+.map-div #directionsList {
+  border: 1px solid #ccc;
+  margin-top: 15px;
+}
+.map-div #directionsList:first-of-type {
+  padding-left: 15px;
+}
+.adp-placemark {
+  width: 98% !important;
+}
