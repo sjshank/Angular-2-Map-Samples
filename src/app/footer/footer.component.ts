@@ -6,5 +6,5 @@ import { Component } from '@angular/core'
     styleUrls: ['./footer.component.less']
 })
 export class FooterComponent{
-    footerTxt : string = 'Developed by Saurabh, Shankariya ';
+    footerTxt : string = 'Copyright © Saurabh Shankariya 2017. Made in Hyderabad, India ';
 }
