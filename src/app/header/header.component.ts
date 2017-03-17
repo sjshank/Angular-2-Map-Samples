@@ -5,7 +5,8 @@ import { AuthorService } from './author.service';
 
 @Component({
     selector: 'app-header',
-    templateUrl: './header.component.html'
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.less']
 })
 export class HeaderComponent implements OnDestroy {
     hTitle: string = 'Angular 2 Map Samples';
@@ -19,16 +20,17 @@ export class HeaderComponent implements OnDestroy {
             .takeWhile(() => this.isAlive)
             .subscribe(
             data => {
-                console.log(data);
                 this.user = data;
             },
             error => {
                 console.log("Error ocuured-----", error);
             }
             )
-
     }
 
+    retrieveLinkednProfile(): void {
+        console.log('inside linkedin');
+    }
 
 
     ngOnDestroy() {
