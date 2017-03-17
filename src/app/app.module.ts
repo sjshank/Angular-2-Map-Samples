@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
 import { AuthorService } from './header/author.service';
 import { BeginnerComponent } from './beginner/beginner.component';
 import { PincodeComponent } from './pincode/pincode.component';
@@ -22,6 +23,7 @@ import {ModalModule} from "ngx-modal";
   declarations: [
     AppComponent,
     HeaderComponent,
+    FooterComponent,
     BeginnerComponent,
     PincodeComponent,
     GeoLocationDirective,
